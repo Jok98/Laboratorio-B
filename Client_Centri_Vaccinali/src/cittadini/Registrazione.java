@@ -17,6 +17,12 @@ import javax.swing.JTextField;
 import centrivaccinali.CentriVaccinali;
 import centrivaccinali.ConnessioneServer;
 
+/**
+ * <p>Registrazione class.</p>
+ *
+ * @author jokmo
+ * @version $Id: $Id
+ */
 public class Registrazione {
 
 	static JFrame frame;
@@ -31,6 +37,8 @@ public class Registrazione {
 	static Registrazione window;
 	/**
 	 * Launch the application.
+	 *
+	 * @param args an array of {@link java.lang.String} objects
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

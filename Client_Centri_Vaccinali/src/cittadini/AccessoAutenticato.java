@@ -25,9 +25,16 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextPane;
 import java.awt.Font;
 
+/**
+ * <p>AccessoAutenticato class.</p>
+ *
+ * @author jokmo
+ * @version $Id: $Id
+ */
 public class AccessoAutenticato {
 
 	public JFrame frmInvioDatiEventi;
+	/** Constant <code>window</code> */
 	public static AccessoAutenticato window = new AccessoAutenticato();
 	static JTextField tfCentroVax;
 	private ArrayList<Object> Eventi_Avversi = new ArrayList<Object>();
@@ -38,8 +45,9 @@ public class AccessoAutenticato {
 	private JTextField tf_4;
 	private JTextField tf_5;
 	/**
-	 * Lancia l'applicazione 
-	 * @throws Exception
+	 * Lancia l'applicazione
+	 *
+	 * @param args an array of {@link java.lang.String} objects
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

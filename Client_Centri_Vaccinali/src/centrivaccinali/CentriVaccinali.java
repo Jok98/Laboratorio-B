@@ -15,24 +15,30 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.awt.event.ActionEvent;
 /**
- * 
+ * <p>CentriVaccinali class.</p>
+ *
  * @author Moi Matteo/Alex Rabuffetti
- * 
+ * @version $Id: $Id
  */
 public class CentriVaccinali {
 	static CittadiniForm CF = new CittadiniForm();
 	static OperatoriForm OF = new OperatoriForm();
 	static CentriVaccinali window;
+	/** Constant <code>frmProgettoCentriVaccinali</code> */
 	public static JFrame frmProgettoCentriVaccinali;
 
+	/** Constant <code>socket</code> */
 	public static Socket socket;
+	/** Constant <code>ins</code> */
 	public static ObjectInputStream ins;
+	/** Constant <code>outs</code> */
 	public static ObjectOutputStream outs;
 
 	
 	/**
-	 * 
-	 * @param args
+	 * <p>main.</p>
+	 *
+	 * @param args an array of {@link java.lang.String} objects
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -94,10 +100,9 @@ public class CentriVaccinali {
 	}
 
 	/**
-	 * 
-	 * @return socket ritorna un socket da utilizzare per la creazione 
-	 *  di una nuova istanza della classe Connessione Server
-	 *  
+	 * <p>openSocket.</p>
+	 *
+	 * @return a {@link java.net.Socket} object
 	 */
 	public static Socket openSocket() {
 		InetAddress addr;

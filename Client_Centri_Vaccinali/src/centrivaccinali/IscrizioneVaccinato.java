@@ -30,9 +30,10 @@ import java.util.ArrayList;
 import java.util.Date;  
 
 /**
- * 
- * @author Moi Matteo/Alex Rabuffetti
+ * <p>IscrizioneVaccinato class.</p>
  *
+ * @author Moi Matteo/Alex Rabuffetti
+ * @version $Id: $Id
  */
 public class IscrizioneVaccinato extends JFrame {
 
@@ -60,6 +61,7 @@ public class IscrizioneVaccinato extends JFrame {
 	private JLabel lbl_mm;
 	static int IdUnivoco;
 	
+	/** Constant <code>frame</code> */
 	public static IscrizioneVaccinato frame = new IscrizioneVaccinato();
 	private ArrayList<CentroVaccinale> src_result;
 	
@@ -69,6 +71,8 @@ public class IscrizioneVaccinato extends JFrame {
 	
 	/**
 	 * Launch the application.
+	 *
+	 * @param args an array of {@link java.lang.String} objects
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

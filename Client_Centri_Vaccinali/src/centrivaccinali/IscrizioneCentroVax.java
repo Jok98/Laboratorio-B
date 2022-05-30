@@ -25,9 +25,10 @@ import java.awt.event.ActionEvent;
 
 
 /**
- * 
- * @author Moi Matteo/Alex Rabuffetti
+ * <p>IscrizioneCentroVax class.</p>
  *
+ * @author Moi Matteo/Alex Rabuffetti
+ * @version $Id: $Id
  */
 public class IscrizioneCentroVax extends JFrame {
 	
@@ -43,10 +44,13 @@ public class IscrizioneCentroVax extends JFrame {
 	
 	ConnessioneServer cs ;
 	
+	/** Constant <code>frame</code> */
 	public static IscrizioneCentroVax frame= new IscrizioneCentroVax();
 	
 	/**
 	 * Launch the application.
+	 *
+	 * @param args an array of {@link java.lang.String} objects
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

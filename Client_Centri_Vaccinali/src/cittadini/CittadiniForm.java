@@ -32,8 +32,15 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 
+/**
+ * <p>CittadiniForm class.</p>
+ *
+ * @author jokmo
+ * @version $Id: $Id
+ */
 public class CittadiniForm {
 
+	/** Constant <code>frmCittadini</code> */
 	public static JFrame frmCittadini;
 	static Registrazione registrazione = new Registrazione();
 	static AccessoAutenticato AccessConf = new AccessoAutenticato();
@@ -45,6 +52,8 @@ public class CittadiniForm {
 	private JTextField tf_NomeCentroVax;
 	/**
 	 * Launch the application.
+	 *
+	 * @param args an array of {@link java.lang.String} objects
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -328,6 +337,12 @@ public class CittadiniForm {
 		tf_NomeCentroVax.setColumns(10);
 	}
 	
+	/**
+	 * <p>LogIn_Result.</p>
+	 *
+	 * @param result a {@link java.lang.String} object
+	 * @param centroVax a {@link java.lang.String} object
+	 */
 	public static void LogIn_Result(String result, String centroVax) {
 		if(result.contentEquals("true")) {
 			AccessConf.frmInvioDatiEventi.setVisible(true);

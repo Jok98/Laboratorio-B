@@ -11,28 +11,35 @@ import java.util.HashMap;
 import cittadini.CittadiniForm;
 
 /**
- * 
+ * <p>ConnessioneServer class.</p>
+ *
  * @author Moi Matteo/Alex Rabuffetti
- * La classe permette di comunicare con il server tramite socket 
- * e inviando un'istanza della classe contenente una stringa che indica 
+ * La classe permette di comunicare con il server tramite socket
+ * e inviando un'istanza della classe contenente una stringa che indica
  * la tipologia di richiesta da elaborare e un oggetto contenente i dati necessari a tale processo
+ * @version $Id: $Id
  */
 public class ConnessioneServer implements Serializable {
 	
+	/** Constant <code>serialVersionUID=192873466528L</code> */
 	public static final long serialVersionUID = 192873466528L;
+	/** Constant <code>socket</code> */
 	public static Socket socket = CentriVaccinali.socket;
+	/** Constant <code>oin</code> */
 	public static ObjectInputStream oin;
+	/** Constant <code>oout</code> */
 	public static ObjectOutputStream oout;
 	String richiesta;
 	public Object obj;
 
 
 /**
- * 
- * @param socket
- * @param richiesta
- * @param obj
- * @throws IOException
+ * <p>Constructor for ConnessioneServer.</p>
+ *
+ * @param socket a {@link java.net.Socket} object
+ * @param richiesta a {@link java.lang.String} object
+ * @param obj a {@link java.lang.Object} object
+ * @throws java.io.IOException
  */
 public ConnessioneServer(Socket socket, String richiesta, Object obj) throws IOException {
 		this.socket = socket;
@@ -43,33 +50,37 @@ public ConnessioneServer(Socket socket, String richiesta, Object obj) throws IOE
 	}
 
 	/**
-	 * 
-	 * @return
+	 * <p>Getter for the field <code>richiesta</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object
 	 */
 	public String getRichiesta() {
 		return richiesta;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * <p>Getter for the field <code>obj</code>.</p>
+	 *
+	 * @return a {@link java.lang.Object} object
 	 */
 	public Object getObj() {
 		return obj;
 	}
 	
 	/**
-	 * 
-	 * @param richiesta
-	 * @return
+	 * <p>Setter for the field <code>richiesta</code>.</p>
+	 *
+	 * @param richiesta a {@link java.lang.String} object
+	 * @return a {@link java.lang.String} object
 	 */
 	public String setRichiesta(String richiesta) {
 		return this.richiesta =richiesta;
 	}
 	
 	/**
-	 * 
-	 * @param obj è un oggetto generico che cambia in base al tipo di richiesta 
+	 * <p>Setter for the field <code>obj</code>.</p>
+	 *
+	 * @param obj è un oggetto generico che cambia in base al tipo di richiesta
 	 * @return obj
 	 */
 	public  Object setObj(Object obj) {
@@ -77,11 +88,12 @@ public ConnessioneServer(Socket socket, String richiesta, Object obj) throws IOE
 	}
 	
 	/**
-	 * 
+	 * <p>richiestaServer.</p>
+	 *
 	 * @param cs è una istanza della classe ConnessioneServer e che viene inviata al server
 	 * @return true/false in base al riuscito invio della richiesta al server
-	 * @throws ClassNotFoundException
-	 * @throws IOException
+	 * @throws java.lang.ClassNotFoundException
+	 * @throws java.io.IOException
 	 */
 	public static boolean richiestaServer(ConnessioneServer cs) throws ClassNotFoundException, IOException {
 		
@@ -100,7 +112,7 @@ public ConnessioneServer(Socket socket, String richiesta, Object obj) throws IOE
 	}
 
 	/**
-	 * Legge tramite socket un'istanza della classe ConnessioneServer contenente 
+	 * Legge tramite socket un'istanza della classe ConnessioneServer contenente
 	 *  i dati e il tipo di richiesta elaborata dal server server
 	 */
 	public static void ricezioneServer() {
@@ -131,8 +143,9 @@ public ConnessioneServer(Socket socket, String richiesta, Object obj) throws IOE
 	
 
 	/**
-	 * 
-	 * @param cs
+	 * <p>cercaCentroVaccinale.</p>
+	 *
+	 * @param cs a {@link centrivaccinali.ConnessioneServer} object
 	 * @return cvlis lista di centri vaccinali ottenuta dopo la query effettuata su db
 	 */
 	@SuppressWarnings("unchecked")

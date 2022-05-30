@@ -9,13 +9,24 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * <p>OperatoriForm class.</p>
+ *
+ * @author jokmo
+ * @version $Id: $Id
+ */
 public class OperatoriForm {
 
+	/** Constant <code>frmAppOperatori</code> */
 	public static JFrame frmAppOperatori;
+	/** Constant <code>CentriVax</code> */
 	public static CentriVaccinali CentriVax = new CentriVaccinali();
+	/** Constant <code>window</code> */
 	public static OperatoriForm window = new OperatoriForm();
 	/**
 	 * Launch the application.
+	 *
+	 * @param args an array of {@link java.lang.String} objects
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

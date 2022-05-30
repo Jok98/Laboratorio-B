@@ -3,9 +3,10 @@ package centrivaccinali;
 import java.io.Serializable;
 
 /**
- * 
- * @author Moi Matteo/Alex Rabuffetti
+ * <p>CentroVaccinale class.</p>
  *
+ * @author Moi Matteo/Alex Rabuffetti
+ * @version $Id: $Id
  */
 public class CentroVaccinale implements Serializable {
 	
@@ -21,17 +22,21 @@ public class CentroVaccinale implements Serializable {
 	String tipologia ;
 	int severita_media;
 	int n_segnalazioni;
+	/** Constant <code>richiesta="centrovax"</code> */
 	public static String richiesta ="centrovax";
 	
 	/**
 	 * Il costruttore imposta un nuovo centro vaccinale con argomenti :
-	 * @param nome
-	 * @param via 
-	 * @param nciv
-	 * @param citta
-	 * @param prov
-	 * @param CAP
-	 * @param tipologia
+	 *
+	 * @param nome a {@link java.lang.String} object
+	 * @param via a {@link java.lang.String} object
+	 * @param nciv a {@link java.lang.Integer} object
+	 * @param prov a {@link java.lang.String} object
+	 * @param CAP a {@link java.lang.Integer} object
+	 * @param tipologia a {@link java.lang.String} object
+	 * @param comune a {@link java.lang.String} object
+	 * @param severita_media a int
+	 * @param n_segnalazioni a int
 	 */
 	public CentroVaccinale(String nome,String via, Integer nciv,String comune, String prov,Integer CAP, String tipologia, int severita_media, int n_segnalazioni) {
 		this.nome = nome;
@@ -47,6 +52,7 @@ public class CentroVaccinale implements Serializable {
 	
 	/**
 	 * restituisce la citta del centro vaccinale
+	 *
 	 * @return comune
 	 */
 	public String getComune() {
@@ -55,6 +61,7 @@ public class CentroVaccinale implements Serializable {
 	
 	/**
 	 * restituisce la via del centro vaccinale
+	 *
 	 * @return via
 	 */
 	public String getVia() {
@@ -63,6 +70,7 @@ public class CentroVaccinale implements Serializable {
 	
 	/**
 	 * restituisce il cap del centro vaccinale
+	 *
 	 * @return CAP
 	 */
 	public Integer getCap() {
@@ -71,6 +79,7 @@ public class CentroVaccinale implements Serializable {
 	
 	/**
 	 * restituisce il nome del centro vaccinale
+	 *
 	 * @return nome
 	 */
 	public String getNome() {
@@ -78,6 +87,7 @@ public class CentroVaccinale implements Serializable {
 	}
 	/**
 	 * restituisce il tipologiao del centro vaccinale
+	 *
 	 * @return tipologia
 	 */
 	public String getTipologia() {
@@ -86,6 +96,7 @@ public class CentroVaccinale implements Serializable {
 	
 	/**
 	 * restituisce la provincia del centro vaccinale
+	 *
 	 * @return prov
 	 */
 	public String getProv() {
@@ -94,6 +105,7 @@ public class CentroVaccinale implements Serializable {
 	
 	/**
 	 * restituisce il numero civico del centro vaccinale
+	 *
 	 * @return nciv
 	 */
 	public Integer getNciv() {
@@ -102,6 +114,7 @@ public class CentroVaccinale implements Serializable {
 	
 	/**
 	 * restituisce tutte le informazioni del centro vaccinale : nome,via,comune,CAP,prov,tipologia,severità media,numero segnalazioni
+	 *
 	 * @return info
 	 */
 	public String getInfo() {
