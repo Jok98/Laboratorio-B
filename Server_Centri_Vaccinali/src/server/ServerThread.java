@@ -1,6 +1,5 @@
 package server;
 
-
 import java.io.*;
 import java.net.*;
 import java.sql.Connection;
@@ -52,7 +51,7 @@ public class ServerThread extends Thread{
 	 * Questo è il main della classe, dove ci si connette al db e si creano le tabelle fondamentali per il coretto funzionamento del programma 
 	 * @param args
 	 */
-@SuppressWarnings("resource")
+
 public static void main(String[] args) {
 	    try {
 	    	if(first_AD==true) {
