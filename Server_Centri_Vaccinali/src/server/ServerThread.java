@@ -14,6 +14,12 @@ import java.util.Scanner;
 import centrivaccinali.*;
 import cittadini.Utente;
 
+/**
+ * <p>ServerThread class.</p>
+ *
+ * @author jokmo
+ * @version $Id: $Id
+ */
 public class ServerThread extends Thread{
 	
 	private static String url = "jdbc:postgresql://127.0.0.1/laboratorio";
@@ -21,6 +27,7 @@ public class ServerThread extends Thread{
 	private static  String password = "admin";
 	static Connection conn = null;
 	static Scanner sc= new Scanner(System.in);
+	/** Constant <code>PORT=8083</code> */
 	public static int PORT = 8083;
 	private Socket socket;
 	private ObjectInputStream oin;
@@ -47,11 +54,11 @@ public class ServerThread extends Thread{
 		start();
 	}	
 
-	/**
-	 * Questo è il main della classe, dove ci si connette al db e si creano le tabelle fondamentali per il coretto funzionamento del programma 
-	 * @param args
-	 */
-
+/**
+ * Questo è il main della classe, dove ci si connette al db e si creano le tabelle fondamentali per il coretto funzionamento del programma
+ *
+ * @param args an array of {@link java.lang.String} objects
+ */
 public static void main(String[] args) {
 	    try {
 	    	if(first_AD==true) {
@@ -106,10 +113,9 @@ public static void main(String[] args) {
 	    }
 	}
 	/**
-	 * Questo metodo viene usato per connettere il server al db fornendo le credenziali di accesso 
+	 * Questo metodo viene usato per connettere il server al db fornendo le credenziali di accesso
+	 *
 	 * @return conn Oggetto di tipo Connection comunicante con uno specifico DB
-	 * @throws SQLException nel caso di errati comandi sql o mancata comunicazione col DB
-	 * 
 	 */
 	public static Connection connect() {
 	Connection conn = null;
@@ -127,13 +133,9 @@ public static void main(String[] args) {
 	  
 
 /**
- * riceve un'istanza della ConnessioneServer la quale contiene sia la stringa indicante la 
+ * riceve un'istanza della ConnessioneServer la quale contiene sia la stringa indicante la
  * richista dal client,  sia i dati necessari all'elaborazione della richiesta sottoforma di oggetto
  * conn Oggetto di tipo Connection comunicante con uno specifico DB
- * @throws IOException nel caso di operazioni I/O fallite o corrotte
- * @throws ClassNotFoundException nel caso in cui si cerchi di caricare una classe non trovata
- * @throws SQLException nel caso di errati comandi sql o mancata comunicazione col DB
- * 
  */
 public void run() {
 		
@@ -181,7 +183,7 @@ public void run() {
 			statement.setString(1, (ComuneTip[0]+"%"));
 			statement.setString(2, ComuneTip[1]);
 			System.out.println("Il server ha ricevuto richiesta per ricerca di : "+ComuneTip[0]+" "+ComuneTip[1]);
-			cvlis = new ArrayList<CentroVaccinale>();
+			cvlis.clear();
         	cvlis = cercaCentroVaccinale(statement);
         	oout.writeObject(cvlis);
 			cvlis.clear();
@@ -216,15 +218,11 @@ public void run() {
 	}
 
 /**
- * Questo metodo serve per restituire e aggionrare l'ID univoco estratto dal DB  
- * 
- * 
- * 
+ * Questo metodo serve per restituire e aggionrare l'ID univoco estratto dal DB
+ *
  * @param conn Oggetto di tipo Connection comunicante con uno specifico DB
- * @return int Valore corrisondente all'id  
- * @throws SQLException nel caso di errati comandi sql o mancata comunicazione col DB
+ * @return int Valore corrisondente all'id
  */
-
 public static int set_get_Id(Connection conn) {
 	int id = 0 ;
 	try {
@@ -245,16 +243,11 @@ public static int set_get_Id(Connection conn) {
 
 /**
  * Questo metodo serve per restituire il nome del centro vaccinale nel quale si è vaccinato un particolare user
- * 
- * 
- *  
+ *
  * @param conn Oggetto di tipo Connection comunicante con uno specifico DB
- * @param idUser Valore ID univoco dello user associato a un particolare centro vaccinale 
+ * @param idUser Valore ID univoco dello user associato a un particolare centro vaccinale
  * @return centroVax Stringa corrispondente al nome del centro vaccinale
- * @throws SQLException nel caso di errati comandi sql o mancata comunicazione col DB 
- */ 
-
-
+ */
 public static String getCentroVax(Connection conn, String idUser) {
 	
 	String centroVax = null;
@@ -276,15 +269,11 @@ public static String getCentroVax(Connection conn, String idUser) {
 
 
 /**
- * Questo metodo serve a ricercare uno o più centri vaccinali, sia per comune e tipologia, sia per nome del centro vaccinale 
- * 
- * 
- * 
+ * Questo metodo serve a ricercare uno o più centri vaccinali, sia per comune e tipologia, sia per nome del centro vaccinale
+ *
  * @param statement oggetto di tipo PreparedStatement contenente la query da eseguire
  * @return ArrayList di tipo CentroVaccinale contenente tutti i Centri Vaccinali risultanti dalla query
- * @throws SQLException nel caso di errati comandi sql o mancata comunicazione col DB
  */
-
 public static ArrayList<CentroVaccinale> cercaCentroVaccinale(PreparedStatement statement) {
 	ArrayList<CentroVaccinale> cvlis = new ArrayList<CentroVaccinale>() ;
 	CentroVaccinale cv = null;
@@ -315,14 +304,12 @@ public static ArrayList<CentroVaccinale> cercaCentroVaccinale(PreparedStatement 
 
 /**
  * Questo metodo serve a registrare un cittadino appena vaccinato in un centro vaccinale, metodo usato dagli operatori dei centri vaccinali
- *  
  *
  * @param conn Oggetto di tipo Connection comunicante con uno specifico DB
  * @param utente Oggetto di tipo Utente contenente informazioni sul cittadino
- * @return int Oggetto di tipo int corrispondente all'id del nuovo vaccinato 
- * @throws SQLException nel caso di errati comandi sql o mancata comunicazione col DB
+ * @return int Oggetto di tipo int corrispondente all'id del nuovo vaccinato
+ * @throws java.sql.SQLException nel caso di errati comandi sql o mancata comunicazione col DB
  */
-
 public static int registraVaccinato(Connection conn, Utente utente) throws SQLException {
 	int id = -1;
 
@@ -364,15 +351,12 @@ public static int registraVaccinato(Connection conn, Utente utente) throws SQLEx
 
 /**
  * Questo metodo serve ad inserire un nuovo centro vaccinale nel DB
- * 
- * 
- * 
+ *
  * @param conn  Oggetto di tipo Connection comunicante con uno specifico DB
  * @param cv Oggeto di tipo CentroVaccinale corrispondente al centro vaccinale da inserire nel DB
  * @return successo Oggetto di tipo Boolean notificante il successo o insuccesso dell'operazione
- * @throws SQLException nel caso di errati comandi sql o mancata comunicazione col DB
+ * @throws java.sql.SQLException nel caso di errati comandi sql o mancata comunicazione col DB
  */
-
 public static  boolean registraCentroVaccinale(Connection conn, CentroVaccinale cv) throws SQLException {
 	Boolean successo = true ;
 	String query = "SELECT * FROM centrivaccinali WHERE nome=? AND comune=?";
@@ -412,15 +396,13 @@ public static  boolean registraCentroVaccinale(Connection conn, CentroVaccinale 
 }
 
 /**
- * Questo metodo serve ad inserire nel db un nuovo cittadino, operazione preliminare necessaria per il futuro login del cittadino  
- * 
- *  
+ * Questo metodo serve ad inserire nel db un nuovo cittadino, operazione preliminare necessaria per il futuro login del cittadino
+ *
  * @param conn Oggetto di tipo Connection comunicante con uno specifico DB
  * @param user Oggetto di tipo Utente contenente informazioni sul cittadino
  * @return Boolean valore primitivo corrispondente al successo o insuccesso dell'operazione
- * @throws SQLException nel caso di errati comandi sql o mancata comunicazione col DB
+ * @throws java.sql.SQLException nel caso di errati comandi sql o mancata comunicazione col DB
  */
-
 public static  boolean registraCittadino(Connection conn, Utente user) throws SQLException   {
 	//se un cittadino si è vaccinato in diversi centri vax verrà preso uno di questi come riferimento per la registrazione
 	Boolean successo = false ;
@@ -461,14 +443,11 @@ public static  boolean registraCittadino(Connection conn, Utente user) throws SQ
 
 /**
  * Questo metodo serve al cittadino per eseguire il login, operazione preliminare necessaria per usufruire delle funzioni riservate ai cittadini registrati
- * 
- * 
+ *
  * @param conn Oggetto di tipo Connection comunicante con uno specifico DB
- * @param datiLogIn HashMap di tipo <Stringa,Stringa> contenente informazioni quali userid e password del cittadino 
- * @return String equivalente a "true" o "false" in caso di successo o insuccesso 
- * @throws SQLException nel caso di errati comandi sql o mancata comunicazione col DB
+ * @param datiLogIn HashMap di tipo <Stringa,Stringa> contenente informazioni quali userid e password del cittadino
+ * @return String equivalente a "true" o "false" in caso di successo o insuccesso
  */
-
 public static String loginCittadino(Connection conn,HashMap <String, String> datiLogIn) {
 	String query = "SELECT userid,password FROM cittadini_registrati WHERE userid=? AND password=?" ;
 	try {
@@ -488,16 +467,13 @@ public static String loginCittadino(Connection conn,HashMap <String, String> dat
 }
 
 /**
- * Questo metodo viene usato dal cittadino che ha eseguito il login per comunicare e inserire nel DB eventuali 
+ * Questo metodo viene usato dal cittadino che ha eseguito il login per comunicare e inserire nel DB eventuali
  * problemi di salute in seguito alla somministrazione del vaccino
- * 
- * 
+ *
  * @param conn Oggetto di tipo Connection comunicante con uno specifico DB
  * @param Eventi_Avversi ArrayList di tipo Object contenente l'intensità dei problemi di salute ed eventuali note opzionali
  * @return Boolean valore primitivo corrispondente al successo o insuccesso dell'operazione
- * @throws SQLException nel caso di errati comandi sql o mancata comunicazione col DB
  */
-
 public static boolean inserisciEventiAvversi(Connection conn, ArrayList<Object> Eventi_Avversi) {
 	String centroVax = (String) Eventi_Avversi.get(0);
 	String create_table_query = "CREATE TABLE IF NOT EXISTS "+centroVax+"_eventi_avversi (mal_di_testa INTEGER, note_mal_di_testa varchar(256),"
@@ -532,15 +508,12 @@ public static boolean inserisciEventiAvversi(Connection conn, ArrayList<Object> 
 }
 
 /**
- * Questo metodo, chiamato a sua volta in inserisciEventiAvversi(), serve a calcolare e aggiornare la media delle severità ed il numero degli 
- * eventi avversi relativi ad un centro vaccinale  
- * 
+ * Questo metodo, chiamato a sua volta in inserisciEventiAvversi(), serve a calcolare e aggiornare la media delle severità ed il numero degli
+ * eventi avversi relativi ad un centro vaccinale
+ *
  * @param centroVax Stringa corrispondente al nome del centro vaccinale da aggiornare
- * @param sev_media_att Float corrispondente alla media delle severità prima dei nuovi inserimenti 
- * @return void 
- * @throws SQLException nel caso di errati comandi sql o mancata comunicazione col DB
+ * @param sev_media_att Float corrispondente alla media delle severità prima dei nuovi inserimenti
  */
-
 public static void updateEventiAvversi(String centroVax, float sev_media_att) {
 	 
 	String query = "SELECT severita_media, n_segnalazioni FROM centrivaccinali WHERE nome=?" ;
@@ -574,15 +547,12 @@ public static void updateEventiAvversi(String centroVax, float sev_media_att) {
 }
 
 /**
- * Questo metodo viene usato per verificare che una certa istanza esista o meno del DB 
- * 
- * 
+ * Questo metodo viene usato per verificare che una certa istanza esista o meno del DB
+ *
  * @param conn Oggetto di tipo Connection comunicante con uno specifico DB
- * @param statement oggetto di tipo PreparedStatement contenente la query da eseguire 
- * @return boolean valore primitivo di tipo Boolean, vero se l'istanza è gia presente nel DB, falso se non è già presente 
- * @throws SQLException nel caso di errati comandi sql o mancata comunicazione col DB
+ * @param statement oggetto di tipo PreparedStatement contenente la query da eseguire
+ * @return boolean valore primitivo di tipo Boolean, vero se l'istanza è gia presente nel DB, falso se non è già presente
  */
-
 public static boolean checkUserData(Connection conn, PreparedStatement statement) {
 	 try {
 			ResultSet rs = statement.executeQuery();
@@ -599,12 +569,10 @@ public static boolean checkUserData(Connection conn, PreparedStatement statement
 
 /**
  * Questo metodo viene usato per la creazione dinamica di una tabella nel caso non esista già
- * 
+ *
  * @param conn Oggetto di tipo Connection comunicante con uno specifico DB
  * @param create_table_query Stringa contenente il comando SQL da eseguire per la creazione della query
- * @return boolean valore primitivo Boolean corrispondente al successo o insuccesso della creazione della tabella 
- * @throws SQLException nel caso di errati comandi sql o mancata comunicazione col DB
- *  
+ * @return boolean valore primitivo Boolean corrispondente al successo o insuccesso della creazione della tabella
  */
 public static  boolean createTable(Connection conn, String create_table_query) {
 			try {

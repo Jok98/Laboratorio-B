@@ -1,6 +1,7 @@
 <!-- comandi da eseguire su console nella cartella dove è presente il file pom.xml del progetto :
 - per creare il database 'laboratorio' : mvn org.codehaus.mojo:sql-maven-plugin:execute 
 - per lanciare il server : mvn exec:java@second-cli
+- per generare la javadoc : mvn javadoc:aggregate
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -25,7 +26,9 @@
 				</excludes>
 			</resource>
 		</resources>
+
 		<plugins>
+		
 		<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -85,7 +88,27 @@
 
 			</plugin>
 
+				        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+
 		</plugins>
 	</build>
+		
+	  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.4.0</version>
+      </plugin>
+
+    </plugins>
+  </reporting>
 
 </project>
