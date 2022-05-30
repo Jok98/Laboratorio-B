@@ -62,46 +62,19 @@ public class ServerThread extends Thread{
 public static void main(String[] args) {
 	    try {
 	    	if(first_AD==true) {
-	    	Scanner scanner;
-	    	String changeDb="";
-	    	do {
-	    		System.out.println("Vuoi modificare dati login database? y/n");
-	    		scanner = new Scanner(System.in);
-	    		changeDb  = scanner.next();
-	    	 }while((!changeDb.equals("y"))&(!changeDb.equals("n")));
-	    	 //System.out.println("digitato : "+changeDb);
-	    	 if(changeDb.equals("y")) {
-	    		 System.out.println("inserire nuovi parametri : \r");
-	    		 System.out.println("inserire nuovo nome database : \r");
-	    		 url = "jdbc:postgresql://127.0.0.1/"+scanner.nextLine();
-	    		 System.out.println("inserire nuovo user db : \r");
-	    		 user = scanner.nextLine();
-	    		 System.out.println("inserire nuova password db : \r");
-	    		 password = scanner.nextLine();
-	    	 }
+	    		setDBdata();
 	    	}
+	    	first_AD=false;
 	      while (true) {
-	    	 first_AD=false;
-	    	 ServerSocket s = new ServerSocket(PORT);  
 	    	 conn = connect();
-	    	 /*if(first_AD==true)showMessageDialog(null,"Server started");
-	    	 first_AD=false;*/
+	    	 createNecesseryTable(conn);
+	    	 ServerSocket s = new ServerSocket(PORT);  
 		     System.out.println("Server started");
 	         Socket socket = s.accept();
 	         new ServerThread(socket);
 	         boolean connesso = s.isBound();
-	         System.out.println(connesso);
-	        
-	         String create_table_centro = "CREATE TABLE IF NOT EXISTS centrivaccinali "+"(siglaprov varchar(2),numciv int ,cap int,comune varchar(20),nome varchar(60) PRIMARY KEY,"
-	        		+ "indirizzo varchar(60),tipologia varchar(20), severita_media float DEFAULT -1 , n_segnalazioni float DEFAULT 0 )";
-	    	 createTable(conn,create_table_centro);
-	        
-	         String create_table_cittadini = "CREATE TABLE IF NOT EXISTS cittadini_registrati ( nome varchar(20),cognome varchar(20),"
-	        		+ "codfisc varchar(16)PRIMARY KEY, email varchar(30),userid varchar(16),password varchar(30),id varchar(20), centroVax varchar(60))";
-	    	 createTable(conn,create_table_cittadini);
-	    	 //65535 valore massimo 16bit
-	    	 String create_table_id = "CREATE SEQUENCE IF NOT EXISTS IDprog AS INT START WITH 1 INCREMENT BY 1 MAXVALUE 65535";
-	    	 createTable(conn,create_table_id);
+	         System.out.println("Generato nuovo thread : "+connesso);
+
 	    	 s.close();
 	
 	    }
@@ -128,8 +101,44 @@ public static void main(String[] args) {
 
       return conn;
   }
-
-
+	
+	@SuppressWarnings("resource")
+	public static void setDBdata() {
+    	Scanner scanner;
+    	String changeDb="";
+    	do {
+    		System.out.println("Vuoi modificare dati login database? y/n");
+    		scanner = new Scanner(System.in);
+    		changeDb  = scanner.next();
+    	 }while((!changeDb.equals("y"))&(!changeDb.equals("n")));
+    	 //System.out.println("digitato : "+changeDb);
+    	 if(changeDb.equals("y")) {
+    		 System.out.println("inserire nuovi parametri : \r");
+    		 System.out.println("inserire nuovo nome database : \r");
+    		 url = "jdbc:postgresql://127.0.0.1/"+scanner.nextLine();
+    		 System.out.println("inserire nuovo user db : \r");
+    		 user = scanner.nextLine();
+    		 System.out.println("inserire nuova password db : \r");
+    		 password = scanner.nextLine();
+    		 System.out.println("I dati di accesso al db sono stati modificati");
+    	 }
+	}
+	
+	public static void createNecesseryTable(Connection conn) {
+		
+		 String create_table_centro = "CREATE TABLE IF NOT EXISTS centrivaccinali "+"(siglaprov varchar(2),numciv int ,cap int,comune varchar(20),nome varchar(60) PRIMARY KEY,"
+	        		+ "indirizzo varchar(60),tipologia varchar(20), severita_media float DEFAULT -1 , n_segnalazioni float DEFAULT 0 )";
+	     createTable(conn,create_table_centro);
+	        
+	     String create_table_cittadini = "CREATE TABLE IF NOT EXISTS cittadini_registrati ( nome varchar(20),cognome varchar(20),"
+	    		 + "codfisc varchar(16)PRIMARY KEY, email varchar(30),userid varchar(16),password varchar(30),id varchar(20), centroVax varchar(60))";
+	     createTable(conn,create_table_cittadini);
+	     
+	     //65535 valore massimo 16bit
+	     String create_table_id = "CREATE SEQUENCE IF NOT EXISTS IDprog AS INT START WITH 1 INCREMENT BY 1 MAXVALUE 65535";
+	     createTable(conn,create_table_id);
+	     //System.out.println("Tabelle necessarie al funzionamento del programma sono presenti nel db");
+	}
 	  
 
 /**
