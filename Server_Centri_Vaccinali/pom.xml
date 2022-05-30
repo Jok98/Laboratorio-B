@@ -7,7 +7,6 @@
 	<groupId>Server_Centri_Vaccinali</groupId>
 	<artifactId>Server_Centri_Vaccinali</artifactId>
 	<version>2.0</version>
-	<packaging>pom</packaging>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
@@ -85,8 +84,6 @@
 				</executions>
 
 			</plugin>
-
-			
 
 		</plugins>
 	</build>
