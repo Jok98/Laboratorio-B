@@ -220,6 +220,7 @@ public class IscrizioneCentroVax extends JFrame {
 						e1.printStackTrace();
 					}
 					OperatoriForm.window.frmAppOperatori.setVisible(true);
+					CleanAll();
 					dispose();
 					
 				} else {
