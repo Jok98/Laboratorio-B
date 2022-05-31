@@ -17,7 +17,7 @@ import cittadini.Utente;
 /**
  * <p>ServerThread class.</p>
  *
- * @author jokmo
+ * @author Matteo Moi/ Alex Rabufetti
  * @version $Id: $Id
  */
 public class ServerThread extends Thread{
@@ -152,10 +152,15 @@ public void run() {
 
     	ConnessioneServer cs =   (ConnessioneServer) oin.readObject();
     	System.out.println("La richiesta inviata dal client : " +cs.getRichiesta());
+    	
     	switch(cs.getRichiesta()) {
     		
     	case "centroVax" :
-    		registraCentroVaccinale(conn,(CentroVaccinale) cs.getObj()); 
+    		registraCentroVaccinale(conn,(CentroVaccinale) cs.getObj());
+    		cs.setRichiesta("centroVaxRegistrato");
+    		cs.setObj(null);
+    		cs.getObj();
+    		oout.writeObject(cs);
     		break;
     	
     	case "registrazioneVaccinato" :
@@ -165,11 +170,14 @@ public void run() {
     		cs.setObj(id);
     		cs.getObj();
     		oout.writeObject(cs);
-    		System.out.println("id univoco del vaccinato : "+id);
+    		//System.out.println("id univoco del vaccinato : "+id);
     		break;
     		
     	case "registrazioneCittadino" :
     		registraCittadino(conn,(Utente) cs.getObj());
+    		cs.setRichiesta("cittadinoRegistrato");
+    		cs.setObj(null);
+    		oout.writeObject(cs);
     		break;
     	
     	case "srcCentroVax" :
@@ -202,6 +210,9 @@ public void run() {
     		Eventi_Avversi = (ArrayList<Object>) cs.getObj();
     		System.out.println("Eventi avversi ricevuti dal sever : "+Eventi_Avversi);
     		inserisciEventiAvversi(conn, Eventi_Avversi );
+    		cs.setRichiesta("eventiAvversiRegistrati");
+    		cs.setObj(null);
+    		oout.writeObject(cs);
     		break;
     	
     	case "LogIn":

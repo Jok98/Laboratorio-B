@@ -1,5 +1,7 @@
 package centrivaccinali;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -131,20 +133,27 @@ public ConnessioneServer(Socket socket, String richiesta, Object obj) throws IOE
 	    	case "IdUnivoco" :
 	    		IscrizioneVaccinato.IdUnivoco = (int) return_cs.getObj();
 	    		System.out.println("id univoco del vaccinato : "+(int) return_cs.getObj());
-	    	break;	
+	    	break;
+	    	case "centroVaxRegistrato" :
+	    		showMessageDialog(null,"Centro vaccinale registrato");
+	    	break;
+	    	case"cittadinoRegistrato":
+	    		showMessageDialog(null,"Cittadino registrato");
+	    	break;
+	    	case"eventiAvversiRegistrati":
+	    		showMessageDialog(null,"Eventi avversi registrati");
+	    	break;
 	    	}
 	    	socket.close();
 		} catch (ClassNotFoundException | IOException e) {
 			//e.printStackTrace();
 		}
-		
-    	
+			
 	}
 	
 
 	/**
 	 * <p>cercaCentroVaccinale.</p>
-	 *
 	 * @param cs a {@link centrivaccinali.ConnessioneServer} object
 	 * @return cvlis lista di centri vaccinali ottenuta dopo la query effettuata su db
 	 */
@@ -160,8 +169,10 @@ public ConnessioneServer(Socket socket, String richiesta, Object obj) throws IOE
 			e.printStackTrace();
 			
 		}
-		//System.out.println("il client ha ricevuto dal server il centro vax : "+cvlis.get(0).getNome()+" "+cvlis.size());
-		
+		if(cvlis.isEmpty()) {
+			showMessageDialog(null,"Nessun centro vaccinale trovato");
+		}else showMessageDialog(null,"Ricerca effettuata con successo");
+
 		return cvlis;
 	}
 }

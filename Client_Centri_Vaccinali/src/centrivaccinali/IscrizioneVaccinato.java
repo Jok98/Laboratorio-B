@@ -363,9 +363,11 @@ public class IscrizioneVaccinato extends JFrame {
 					
 									e1.printStackTrace();
 								}
-								showMessageDialog(null,"Id univoco vaccinato : "+IdUnivoco);
-								/*OperatoriForm.window.frmAppOperatori.setVisible(true);
-								frame.dispose();*/
+								if(IdUnivoco==-1) {
+									showMessageDialog(null,"Vaccinato già registrato presso questo centro vaccinale");
+								}else showMessageDialog(null,"Id univoco vaccinato : "+IdUnivoco);
+								
+								
 						} else {
 							showMessageDialog(null,"Ci sono stringhe vuote");
 						}
