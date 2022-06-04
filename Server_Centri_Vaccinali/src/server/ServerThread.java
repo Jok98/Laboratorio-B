@@ -126,7 +126,7 @@ public static void main(String[] args) {
 	
 	public static void createNecesseryTable(Connection conn) {
 		
-		 String create_table_centro = "CREATE TABLE IF NOT EXISTS centrivaccinali "+"(siglaprov varchar(2),numciv int ,cap int,comune varchar(20),nome varchar(60) PRIMARY KEY,"
+		 String create_table_centro = "CREATE TABLE IF NOT EXISTS centrivaccinali "+"(siglaprov varchar(2),numciv int,cap int,comune varchar(20),nome varchar(60) PRIMARY KEY,"
 	        		+ "indirizzo varchar(60),tipologia varchar(20), severita_media float DEFAULT -1 , n_segnalazioni float DEFAULT 0 )";
 	     createTable(conn,create_table_centro);
 	        
