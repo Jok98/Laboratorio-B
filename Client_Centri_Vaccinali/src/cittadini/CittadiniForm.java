@@ -115,7 +115,7 @@ public class CittadiniForm {
 				if(tf_NomeCentroVax.getText().isEmpty()) {
 					showMessageDialog(null,"Selezionare il centro in cui si è stati vaccinati");
 				}else {
-				Registrazione.frame.setVisible(true);
+				Registrazione.frmRegistrazioneCittadino.setVisible(true);
 				Registrazione.tf_NomeCentroVax.setText(nome_Centro_Vax);
 				frmCittadini.setVisible(false);
 				}

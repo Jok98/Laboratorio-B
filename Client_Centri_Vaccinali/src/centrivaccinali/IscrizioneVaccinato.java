@@ -93,7 +93,7 @@ public class IscrizioneVaccinato extends JFrame {
 	@SuppressWarnings({ "unchecked", "serial", "rawtypes" })
 	public IscrizioneVaccinato() {
 		setResizable(false);
-		setTitle("Iscrizione vaccinato");
+		setTitle("Registrazione vaccinato");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 530, 479);
 		contentPane = new JPanel();

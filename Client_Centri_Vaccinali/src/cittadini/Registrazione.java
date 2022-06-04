@@ -25,7 +25,7 @@ import centrivaccinali.ConnessioneServer;
  */
 public class Registrazione {
 
-	static JFrame frame;
+	static JFrame frmRegistrazioneCittadino;
 	private static JTextField tfNome;
 	private static JTextField tfCognome;
 	private static JTextField tfCodiceFiscale;
@@ -45,7 +45,7 @@ public class Registrazione {
 			public void run() {
 				try {
 					window = new Registrazione();
-					window.frame.setVisible(true);
+					window.frmRegistrazioneCittadino.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -64,86 +64,88 @@ public class Registrazione {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 326);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmRegistrazioneCittadino = new JFrame();
+		frmRegistrazioneCittadino.setResizable(false);
+		frmRegistrazioneCittadino.setTitle("Registrazione cittadino");
+		frmRegistrazioneCittadino.setBounds(100, 100, 450, 326);
+		frmRegistrazioneCittadino.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmRegistrazioneCittadino.getContentPane().setLayout(null);
 		
 
 		//start lblNome
 		JLabel lblNome = new JLabel("Nome :");
 		lblNome.setBounds(10, 11, 112, 14);
-		frame.getContentPane().add(lblNome);
+		frmRegistrazioneCittadino.getContentPane().add(lblNome);
 		
 		//start lblCognome
 		JLabel lblCognome = new JLabel("Cognome :");
 		lblCognome.setBounds(10, 42, 112, 14);
-		frame.getContentPane().add(lblCognome);
+		frmRegistrazioneCittadino.getContentPane().add(lblCognome);
 		
 		//start tfNome
 		tfNome = new JTextField();
 		tfNome.setBounds(174, 8, 250, 20);
-		frame.getContentPane().add(tfNome);
+		frmRegistrazioneCittadino.getContentPane().add(tfNome);
 		tfNome.setColumns(10);
 		
 		//start tfCognome
 		tfCognome = new JTextField();
 		tfCognome.setBounds(174, 39, 250, 20);
-		frame.getContentPane().add(tfCognome);
+		frmRegistrazioneCittadino.getContentPane().add(tfCognome);
 		tfCognome.setColumns(10);
 		
 		//start tfCodiceFiscale
 		tfCodiceFiscale = new JTextField();
 		tfCodiceFiscale.setBounds(174, 70, 250, 20);
-		frame.getContentPane().add(tfCodiceFiscale);
+		frmRegistrazioneCittadino.getContentPane().add(tfCodiceFiscale);
 		tfCodiceFiscale.setColumns(10);
 		
 		//start lblCodicefiscale
 		JLabel lblCodicefiscale = new JLabel("Codice Fiscale :");
 		lblCodicefiscale.setBounds(10, 73, 112, 14);
-		frame.getContentPane().add(lblCodicefiscale);
+		frmRegistrazioneCittadino.getContentPane().add(lblCodicefiscale);
 		
 		//start tfEmail
 		tfEmail = new JTextField();
 		tfEmail.setBounds(174, 101, 250, 20);
-		frame.getContentPane().add(tfEmail);
+		frmRegistrazioneCittadino.getContentPane().add(tfEmail);
 		tfEmail.setColumns(10);
 		
 		//start lblEmail
 		JLabel lblEmail = new JLabel("Email :");
 		lblEmail.setBounds(10, 104, 112, 14);
-		frame.getContentPane().add(lblEmail);
+		frmRegistrazioneCittadino.getContentPane().add(lblEmail);
 		
 		//start tfUserID
 		tfUserID = new JTextField();
 		tfUserID.setBounds(174, 132, 250, 20);
-		frame.getContentPane().add(tfUserID);
+		frmRegistrazioneCittadino.getContentPane().add(tfUserID);
 		tfUserID.setColumns(10);
 		
 		//start lblUserID
 		JLabel lblUserID = new JLabel("User ID");
 		lblUserID.setBounds(10, 135, 46, 14);
-		frame.getContentPane().add(lblUserID);
+		frmRegistrazioneCittadino.getContentPane().add(lblUserID);
 		
 		//start lblPassword
 		JLabel lblPassword = new JLabel("Password :");
 		lblPassword.setBounds(10, 166, 112, 14);
-		frame.getContentPane().add(lblPassword);
+		frmRegistrazioneCittadino.getContentPane().add(lblPassword);
 		
 		//start passwordField
 		passwordField = new JPasswordField();
 		passwordField.setBounds(174, 163, 250, 20);
-		frame.getContentPane().add(passwordField);
+		frmRegistrazioneCittadino.getContentPane().add(passwordField);
 		
 		//start lblIDUnicoVax
 		JLabel lblIDUnicoVax = new JLabel("Id univoco vaccinazione :");
 		lblIDUnicoVax.setBounds(10, 197, 150, 14);
-		frame.getContentPane().add(lblIDUnicoVax);
+		frmRegistrazioneCittadino.getContentPane().add(lblIDUnicoVax);
 		
 		//start tfIDUnivocoVax
 		tfIDUnivocoVax = new JTextField();
 		tfIDUnivocoVax.setBounds(174, 194, 250, 20);
-		frame.getContentPane().add(tfIDUnivocoVax);
+		frmRegistrazioneCittadino.getContentPane().add(tfIDUnivocoVax);
 		tfIDUnivocoVax.setColumns(10);
 		
 		//Start btnRegistra
@@ -188,7 +190,7 @@ public class Registrazione {
 					e1.printStackTrace();
 				}
 				CittadiniForm.frmCittadini.setVisible(true);
-				frame.dispose();
+				frmRegistrazioneCittadino.dispose();
 				}
 				else {
 					showMessageDialog(null,"Errore compilazione campi");
@@ -196,7 +198,7 @@ public class Registrazione {
 			}
 		});
 		btnRegistra.setBounds(174, 248, 89, 23);
-		frame.getContentPane().add(btnRegistra);
+		frmRegistrazioneCittadino.getContentPane().add(btnRegistra);
 		//end btnRegistra
 		
 		//Start btnBack
@@ -206,25 +208,25 @@ public class Registrazione {
 			public void actionPerformed(ActionEvent e) {
 				CittadiniForm.frmCittadini.setVisible(true);
 				CleanAll();
-				frame.dispose();
+				frmRegistrazioneCittadino.dispose();
 			}
 		});
 		btnBack.setBounds(10, 248, 89, 23);
-		frame.getContentPane().add(btnBack);
+		frmRegistrazioneCittadino.getContentPane().add(btnBack);
 		//end btnBack
 		
 		
 		//Start lbl_CentroVax
 		JLabel lbl_CentroVax = new JLabel("Centro vaccinale selezionato :");
 		lbl_CentroVax.setBounds(10, 223, 150, 14);
-		frame.getContentPane().add(lbl_CentroVax);
+		frmRegistrazioneCittadino.getContentPane().add(lbl_CentroVax);
 		//end lbl_CentroVax
 		
 		//Start tf_NomeCentroVax
 		tf_NomeCentroVax = new JTextField();
 		tf_NomeCentroVax.setEditable(false);
 		tf_NomeCentroVax.setBounds(174, 220, 250, 20);
-		frame.getContentPane().add(tf_NomeCentroVax);
+		frmRegistrazioneCittadino.getContentPane().add(tf_NomeCentroVax);
 		tf_NomeCentroVax.setColumns(10);
 		//End tf_NomeCentroVax
 		
@@ -236,7 +238,7 @@ public class Registrazione {
 			}
 		});
 		btnPulisci.setBounds(335, 248, 89, 23);
-		frame.getContentPane().add(btnPulisci);
+		frmRegistrazioneCittadino.getContentPane().add(btnPulisci);
 		//end btnPulisci
 	}
 	
