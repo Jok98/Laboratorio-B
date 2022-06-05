@@ -20,7 +20,7 @@ import centrivaccinali.ConnessioneServer;
 /**
  * <p>Registrazione class.</p>
  *
- * @author jokmo
+ * @author Moi Matteo 737574 VA | Rabuffetti Alex 739394 VA
  * @version $Id: $Id
  */
 public class Registrazione {

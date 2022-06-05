@@ -15,7 +15,7 @@ import cittadini.CittadiniForm;
 /**
  * <p>ConnessioneServer class.</p>
  *
- * @author Moi Matteo/Alex Rabuffetti
+ * @author Moi Matteo 737574 VA | Rabuffetti Alex 739394 VA
  * La classe permette di comunicare con il server tramite socket
  * e inviando un'istanza della classe contenente una stringa che indica
  * la tipologia di richiesta da elaborare e un oggetto contenente i dati necessari a tale processo

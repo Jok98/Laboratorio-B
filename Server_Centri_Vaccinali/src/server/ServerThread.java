@@ -17,7 +17,7 @@ import cittadini.Utente;
 /**
  * <p>ServerThread class.</p>
  *
- * @author Matteo Moi/ Alex Rabufetti
+ * @author Moi Matteo 737574 VA | Rabuffetti Alex 739394 VA
  * @version $Id: $Id
  */
 public class ServerThread extends Thread{

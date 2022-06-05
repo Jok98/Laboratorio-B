@@ -28,7 +28,7 @@ import java.awt.Font;
 /**
  * <p>AccessoAutenticato class.</p>
  *
- * @author jokmo
+ * @author Moi Matteo 737574 VA | Rabuffetti Alex 739394 VA
  * @version $Id: $Id
  */
 public class AccessoAutenticato {

@@ -5,9 +5,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 
 
 /**
@@ -112,6 +109,3 @@ public ConnessioneServer(Socket socket, String richiesta, Object obj) throws IOE
 	
 
 }
-
-
-

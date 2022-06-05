@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * <p>CentroVaccinale class.</p>
  *
- * @author Moi Matteo/Alex Rabuffetti
+ * @author Moi Matteo 737574 VA | Rabuffetti Alex 739394 VA
  * @version $Id: $Id
  */
 public class CentroVaccinale implements Serializable {

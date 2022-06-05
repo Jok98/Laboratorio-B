@@ -32,7 +32,7 @@ import java.util.Date;
 /**
  * <p>IscrizioneVaccinato class.</p>
  *
- * @author Moi Matteo/Alex Rabuffetti
+ * @author Moi Matteo 737574 VA | Rabuffetti Alex 739394 VA
  * @version $Id: $Id
  */
 public class IscrizioneVaccinato extends JFrame {
