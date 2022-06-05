@@ -118,7 +118,7 @@ public ConnessioneServer(Socket socket, String richiesta, Object obj) throws IOE
 	 *  i dati e il tipo di richiesta elaborata dal server server
 	 */
 	public static void ricezioneServer() {
-		Boolean rs;
+		Boolean rs = false;
 		try {
 			ConnessioneServer return_cs =  (ConnessioneServer) oin.readObject();
 			System.out.println("La risposta del server per la richiesta di  :"+return_cs.getRichiesta());
@@ -138,14 +138,14 @@ public ConnessioneServer(Socket socket, String richiesta, Object obj) throws IOE
 	    		rs= (Boolean) return_cs.getObj();
 	    		if(rs==true) {
 	    			showMessageDialog(null,"Centro vaccinale registrato");
-	    		}else showMessageDialog(null,"Centro vaccinale già presente");
+	    		}else if(rs==null){}else showMessageDialog(null,"Centro vaccinale già presente");
 	    		
 	    	break;
 	    	case"cittadinoRegistrato":
 	    		rs= (Boolean) return_cs.getObj();
 	    		if(rs==true) {
 	    			showMessageDialog(null,"Cittadino registrato");
-	    		}else showMessageDialog(null,"Cittadino non registrato! \r\n "
+	    		}else if(rs==null){}else showMessageDialog(null,"Cittadino non registrato! \r\n "
 	    				+ "Centro vaccinale, Codice fiscale o ID univoco non corrispondono");
 	    		
 	    	break;
