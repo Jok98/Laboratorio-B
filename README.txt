@@ -6,10 +6,11 @@ Componenti necessarie :
 - JRE (Java Runtime Environment) o JDK (Java Development Kit). Istruzioni per l'installazione: https://www.oracle.com/downloads/index.htm
 
 Dati di default di accesso al database :
-- url : jdbc:postgresql://127.0.0.8/laboratorio
+- url : jdbc:postgresql://127.0.0.1/laboratorio
 - user : postgres
 - password : admin
-N.B. Se si desidera cambiare tali dati bisogna modificare il file pom.xml presente nella cartella "\Server_Centri_Vaccinali" e poi dopo aver avviato l'app server modificarli anche lì seguendo le istruzioni su console
+N.B. Se si desidera cambiare i dati di default bisogna modificare il file pom.xml presente nella cartella "\Server_Centri_Vaccinali" e cambiare i dati di accesso (url, username, password) 
+	presenti come variabili nella classe ServerThread.java presente nel path \Server_Centri_Vaccinali\src\server\ServerThread.java
 *lasciare 127.0.0.1 se il db è locale
 
 

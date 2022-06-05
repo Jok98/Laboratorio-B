@@ -203,11 +203,12 @@ public class IscrizioneCentroVax extends JFrame {
 				try {
 					CAP = Integer.valueOf(tfCAP.getText().replaceAll(" ", ""));
 				} catch (NumberFormatException a) {
+					CAP=0;
 					showMessageDialog(null,"Formato del CAP non valido");
 				}
 				
 				if (centrovax.isEmpty() || IndirizzoCentroVax.isEmpty() || Comune.isEmpty() || SiglaProvincia.isEmpty()  
-						|| CAP.toString().isEmpty() || (CAP.toString().length()>5))	isValid = false;
+						|| CAP.toString().isEmpty() || (CAP.toString().length()!=5))	isValid = false;
 				
 				if (isValid == true) {
 				
