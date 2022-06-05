@@ -158,8 +158,7 @@ public class AccessoAutenticato {
 		tf_5.setBounds(242, 435, 355, 61);
 		frmInvioDatiEventi.getContentPane().add(tf_5);
 		
-		JButton btnSegnala = new JButton("Segnala");
-		btnSegnala.addActionListener(new ActionListener() {
+		
 		/**
 		 * 
 		 *Questo metodo raccoglie i dati inseriti dall'utente, li inserisce nell'ArrayList di tipo Oggetto e li
@@ -170,6 +169,8 @@ public class AccessoAutenticato {
 		 * @throws ClassNotFoundException nel caso in cui si cerchi di caricare una classe non trovata
 		 * 
 		 */
+		JButton btnSegnala = new JButton("Segnala");
+		btnSegnala.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//System.out.println((String) tblEventiAvversi.getModel().getValueAt(0, 0));
 				Boolean check = true;
@@ -186,11 +187,26 @@ public class AccessoAutenticato {
 					Socket socket = CentriVaccinali.openSocket();
 					ConnessioneServer cs = new ConnessioneServer(socket,"eventiAvversi", Eventi_Avversi);
 					System.out.println(ConnessioneServer.richiestaServer(cs));
+					
 				} catch (IOException | ClassNotFoundException e1) {
 					
 					e1.printStackTrace();
 				}
+				tf_0.setText("");
+				tf_1.setText("");
+				tf_2.setText("");
+				tf_3.setText("");
+				tf_4.setText("");
+				tf_5.setText("");
+				cb_0.setSelectedIndex(0);
+				cb_1.setSelectedIndex(0);
+				cb_2.setSelectedIndex(0);
+				cb_3.setSelectedIndex(0);
+				cb_4.setSelectedIndex(0);
+				cb_5.setSelectedIndex(0);
 				Eventi_Avversi.clear();
+				
+				
 				//frmInvioDatiEventi.setVisible(false);
 				CittadiniForm.frmCittadini.setVisible(true);
 				frmInvioDatiEventi.dispose();
@@ -203,7 +219,18 @@ public class AccessoAutenticato {
 		JButton btnBack = new JButton("Indietro");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				tf_0.setText("");
+				tf_1.setText("");
+				tf_2.setText("");
+				tf_3.setText("");
+				tf_4.setText("");
+				tf_5.setText("");
+				cb_0.setSelectedIndex(0);
+				cb_1.setSelectedIndex(0);
+				cb_2.setSelectedIndex(0);
+				cb_3.setSelectedIndex(0);
+				cb_4.setSelectedIndex(0);
+				cb_5.setSelectedIndex(0);
 				frmInvioDatiEventi.setVisible(false);
 				CittadiniForm.frmCittadini.setVisible(true);
 				frmInvioDatiEventi.dispose();
@@ -248,8 +275,13 @@ public class AccessoAutenticato {
 		lblCrisiIpertensiva.setBounds(10, 458, 98, 14);
 		frmInvioDatiEventi.getContentPane().add(lblCrisiIpertensiva);
 		
+
+	
+	
 		
 		
 		
 	}
+	
+
 }

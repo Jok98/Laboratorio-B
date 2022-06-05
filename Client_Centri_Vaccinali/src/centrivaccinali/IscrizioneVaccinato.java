@@ -285,7 +285,7 @@ public class IscrizioneVaccinato extends JFrame {
 		
 		//Start ComboBox cb_Month
 		JComboBox cb_Month = new JComboBox();
-		cb_Month.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
+		cb_Month.setModel(new DefaultComboBoxModel(new String[] {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
 		cb_Month.setSelectedIndex(0);
 		cb_Month.setBounds(285, 337, 46, 22);
 		contentPane.add(cb_Month);
@@ -329,7 +329,7 @@ public class IscrizioneVaccinato extends JFrame {
 					String gg = (tf_gg.getText().length()<2)? "0"+tf_gg.getText():null;
 					String sDate1=gg+((String) cb_Month.getSelectedItem())+tf_aaaa.getText(); 
 					System.out.println("data della vaccinazione :"+sDate1);
-					if (sDate1.isEmpty()& sDate1.length()!=6) {
+					if (sDate1.length()!=8) {
 						showMessageDialog(null,"Immettere data vaccinazione");
 					} else {
 						SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");

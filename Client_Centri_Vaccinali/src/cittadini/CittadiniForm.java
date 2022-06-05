@@ -99,6 +99,8 @@ public class CittadiniForm {
 						Socket socket = CentriVaccinali.openSocket();
 						ConnessioneServer cs = new ConnessioneServer(socket,"LogIn", datiLogIn);
 						System.out.println(ConnessioneServer.richiestaServer(cs));
+						tfID.setText("");
+						passwordField.setText("");
 					} catch (IOException | ClassNotFoundException e1) {
 					
 						e1.printStackTrace();

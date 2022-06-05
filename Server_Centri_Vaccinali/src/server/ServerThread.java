@@ -174,9 +174,9 @@ public void run() {
     		break;
     		
     	case "registrazioneCittadino" :
-    		registraCittadino(conn,(Utente) cs.getObj());
+    		Boolean rs = registraCittadino(conn,(Utente) cs.getObj());
     		cs.setRichiesta("cittadinoRegistrato");
-    		cs.setObj(null);
+    		cs.setObj(rs);
     		oout.writeObject(cs);
     		break;
     	
@@ -186,7 +186,7 @@ public void run() {
     		statement = conn.prepareStatement(n);
     		String nomeCentro = (String) cs.getObj();
     		//System.out.println("base di ricerca centro vax : "+nomeCentro);
-    		statement.setString(1, (nomeCentro+"%"));
+    		statement.setString(1, ("%"+nomeCentro+"%"));
         	cvlis = cercaCentroVaccinale(statement);
         	//System.out.println("centro vax trovati: "+cvlis);
         	oout.writeObject(cvlis);
@@ -435,7 +435,7 @@ public static  boolean registraCittadino(Connection conn, Utente user) throws SQ
 	
 	
 	if (successo == false) {
-		System.out.println("Centro vaccinale o ID univoco non corrispondono");
+		System.out.println("Centro vaccinale, Codice fiscale o ID univoco non corrispondono");
 		//showMessageDialog(null,"Centro vaccinale o ID univoco non corrispondono");
 		return false ;
 	} 
