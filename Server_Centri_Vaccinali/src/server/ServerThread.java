@@ -22,7 +22,7 @@ import cittadini.Utente;
  */
 public class ServerThread extends Thread{
 	
-	private static String url = "jdbc:postgresql://127.0.0.1/laboratorio";
+	private static String url = "jdbc:postgresql://127.0.0.8/laboratorio";
 	private static  String user = "postgres";
 	private static  String password = "admin";
 	static Connection conn = null;
@@ -113,9 +113,11 @@ public static void main(String[] args) {
     	 }while((!changeDb.equals("y"))&(!changeDb.equals("n")));
     	 //System.out.println("digitato : "+changeDb);
     	 if(changeDb.equals("y")) {
-    		 System.out.println("inserire nuovi parametri : \r");
-    		 System.out.println("inserire nuovo nome database : \r");
-    		 url = "jdbc:postgresql://127.0.0.1/"+scanner.nextLine();
+    		 //System.out.println("inserire nuovi parametri : \r");
+    		 System.out.println("inserire nuovo ip : \r");
+    		 scanner.nextLine();
+    		 String new_url = scanner.nextLine();
+    		 url = "jdbc:postgresql://"+new_url+"/laboratorio";
     		 System.out.println("inserire nuovo user db : \r");
     		 user = scanner.nextLine();
     		 System.out.println("inserire nuova password db : \r");

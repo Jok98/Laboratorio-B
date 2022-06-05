@@ -5,6 +5,13 @@ Componenti necessarie :
 - necessario maven, istruzioni per l'installazione : https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
 - JRE (Java Runtime Environment) o JDK (Java Development Kit). Istruzioni per l'installazione: https://www.oracle.com/downloads/index.htm
 
+Dati di default di accesso al database :
+- url : jdbc:postgresql://127.0.0.8/laboratorio
+- user : postgres
+- password : admin
+N.B. Se si desidera cambiare tali dati bisogna modificare il file pom.xml presente nella cartella "\Server_Centri_Vaccinali" e poi dopo aver avviato l'app server modificarli anche lì seguendo le istruzioni su console
+
+
 
 Prima del primo avvio :
 - aprire cmd
