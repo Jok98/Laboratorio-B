@@ -10,7 +10,7 @@ Dati di default di accesso al database :
 - user : postgres
 - password : admin
 N.B. Se si desidera cambiare tali dati bisogna modificare il file pom.xml presente nella cartella "\Server_Centri_Vaccinali" e poi dopo aver avviato l'app server modificarli anche lì seguendo le istruzioni su console
-
+*lasciare 127.0.0.1 se il db è locale
 
 
 Prima del primo avvio :
