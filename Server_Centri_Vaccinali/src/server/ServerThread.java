@@ -102,6 +102,9 @@ public static void main(String[] args) {
       return conn;
   }
 	
+	/**
+	 * <p>setDBdata.</p>
+	 */
 	@SuppressWarnings("resource")
 	public static void setDBdata() {
     	Scanner scanner;
@@ -126,6 +129,11 @@ public static void main(String[] args) {
     	 }
 	}
 	
+	/**
+	 * <p>createNecesseryTable.</p>
+	 *
+	 * @param conn a Connection object
+	 */
 	public static void createNecesseryTable(Connection conn) {
 		
 		 String create_table_centro = "CREATE TABLE IF NOT EXISTS centrivaccinali "+"(siglaprov varchar(2),numciv int,cap int,comune varchar(20),nome varchar(60) PRIMARY KEY,"
@@ -158,9 +166,9 @@ public void run() {
     	switch(cs.getRichiesta()) {
     		
     	case "centroVax" :
-    		registraCentroVaccinale(conn,(CentroVaccinale) cs.getObj());
+    		Boolean rs_cv = registraCentroVaccinale(conn,(CentroVaccinale) cs.getObj());
     		cs.setRichiesta("centroVaxRegistrato");
-    		cs.setObj(null);
+    		cs.setObj(rs_cv);
     		cs.getObj();
     		oout.writeObject(cs);
     		break;
