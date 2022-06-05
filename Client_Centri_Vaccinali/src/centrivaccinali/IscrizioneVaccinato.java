@@ -48,8 +48,8 @@ public class IscrizioneVaccinato extends JFrame {
 	private static JTextField tfNomeVaccinato;
 	private static JTextField tfCognomeVaccinato;
 	private static JTextField tfCodiceFiscale;
-	private static JTextField tf_gg;
 	private static JTextField tf_aaaa;
+	private static JComboBox<?> cb_gg;
 	
 	private JLabel lblCentroVaxSelezionato;
 	private JLabel lblRicercaCentriVax;
@@ -66,6 +66,7 @@ public class IscrizioneVaccinato extends JFrame {
 	private ArrayList<CentroVaccinale> src_result;
 	
 	public Utente user;
+	
 	
 	
 	
@@ -248,14 +249,14 @@ public class IscrizioneVaccinato extends JFrame {
 		lblNewLabel_3 = new JLabel("Data somministrazione : ");
 		lblNewLabel_3.setBounds(10, 340, 163, 14);
 		contentPane.add(lblNewLabel_3);
-		//End label Data somministrazione
-		
-		//Start textfield giorni
-		tf_gg = new JTextField();
-		tf_gg.setBounds(189, 337, 46, 20);
-		contentPane.add(tf_gg);
-		tf_gg.setColumns(10);
 		//End textfield giorni
+		
+		//Start combobox giorni
+		cb_gg = new JComboBox();
+		cb_gg.setModel(new DefaultComboBoxModel(new String[] {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
+		cb_gg.setSelectedIndex(0);
+		cb_gg.setBounds(183, 337, 46, 22);
+		contentPane.add(cb_gg);
 		
 		//Start label lblVaxSomministrato
 		JLabel lblVaxSomministrato = new JLabel("Vaccino somministrato :");
@@ -326,7 +327,8 @@ public class IscrizioneVaccinato extends JFrame {
 				if(tfCentroVaxSelezionato.getText().isEmpty()) {
 					showMessageDialog(null,"Selezionare il centro in cui si e' stata eseguita la vaccinazione");
 				}else {
-					String gg = (tf_gg.getText().length()<2)? "0"+tf_gg.getText():null;
+					String gg = (String) cb_gg.getSelectedItem();
+					
 					String sDate1=gg+((String) cb_Month.getSelectedItem())+tf_aaaa.getText(); 
 					System.out.println("data della vaccinazione :"+sDate1);
 					if (sDate1.length()!=8) {
@@ -399,6 +401,8 @@ public class IscrizioneVaccinato extends JFrame {
 		});
 		btnPulisci.setBounds(415, 409, 89, 23);
 		contentPane.add(btnPulisci);
+		
+
 		//End button btnBack
 	}
 	static void CleanAll() {
@@ -409,7 +413,7 @@ public class IscrizioneVaccinato extends JFrame {
 			tfNomeVaccinato.setText("");
 			tfCognomeVaccinato.setText("");
 			tfCodiceFiscale.setText("");
-			tf_gg.setText("");
+			cb_gg.setSelectedIndex(0);
 			tf_aaaa.setText("");
 		} catch (Exception e) {
 			e.printStackTrace();

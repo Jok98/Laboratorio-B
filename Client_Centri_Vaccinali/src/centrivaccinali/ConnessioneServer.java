@@ -163,6 +163,7 @@ public ConnessioneServer(Socket socket, String richiesta, Object obj) throws IOE
 
 	/**
 	 * <p>cercaCentroVaccinale.</p>
+	 *
 	 * @param cs a {@link centrivaccinali.ConnessioneServer} object
 	 * @return cvlis lista di centri vaccinali ottenuta dopo la query effettuata su db
 	 */
