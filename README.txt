@@ -1,5 +1,6 @@
 # Laboratorio-B
 Versione 2.0 del progetto centri vaccinali
+Per visionare le specifiche del progetto fare riferimento al file 02-Specifiche-Progetto-CentroVaccinale.pdf
 
 Componenti necessarie :
 - necessario maven, istruzioni per l'installazione : https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
